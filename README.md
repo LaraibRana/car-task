@@ -38,7 +38,7 @@ The application include mysql database for development phase.
 
 ```
 # git clone project
-https://github.com/LaraibRana/car-registration-task.git
+https://github.com/LaraibRana/car-task.git
 ```
 #### **Step-2** Python-vitual environment and dependencies installation
 
