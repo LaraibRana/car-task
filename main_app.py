@@ -11,6 +11,7 @@ main_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = false
 db = SQLAlchemy(main_app)
 
 from web.cars import cars_blueprint
+
 from web.users import users_blueprint
 
 main_app.register_blueprint(cars_blueprint)
