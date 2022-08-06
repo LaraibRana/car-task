@@ -3,15 +3,15 @@ import uuid
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 
-from main_app import db
+from database import db
 
 
 class UserModel(db.Model):
     __tablename__ = 'users'
 
-    id = Column(String(), primary_key=True)
-    name = Column(String(), nullable=True)
-    password = Column(String(), nullable=True)
+    id = Column(String(255), primary_key=True, nullable=False)
+    name = Column(String(255), nullable=True)
+    password = Column(String(255), nullable=True)
     cars = relationship(
         "CarModel", backref="car", cascade="all, delete-orphan", lazy="dynamic"
     )

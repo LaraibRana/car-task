@@ -17,3 +17,4 @@ class CarQuerySchema(Schema):
     year = fields.String()
     make = fields.String()
     model = fields.String()
+

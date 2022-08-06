@@ -1,12 +1,11 @@
-from db_models.car_model import CarModel
 from flask import jsonify
 
-from main_app import db
-from . import CarQuerySchema
-from . import cars_blueprint
+from database import db
+from db_models.car_model import CarModel
+from web.car_api import car_blueprint
 
 
-@cars_blueprint.get('/cars-list')
+@car_blueprint.route('/cars-list', methods=['GET'])
 def list_cars_data():
     """
     List Cars data
@@ -20,8 +19,7 @@ def list_cars_data():
     return jsonify(cars_list)
 
 
-@cars_blueprint.get('/cars')
-@input(CarQuerySchema)
+@car_blueprint.route('/cars', methods=['GET'])
 def get_car(car_query):
     """
     Retrieves Cars data
@@ -32,4 +30,4 @@ def get_car(car_query):
     model = car_query['model']
 
     car = db.session.query(CarModel).filter_by(year=year, model=model, make=make).first()
-    return car.to_json() if car else {}
+    return jsonify(car.to_json() if car else {})
